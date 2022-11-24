@@ -1,0 +1,22 @@
+
+.mainGridContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    justify-content: center;
+    align-items: cente
+}
+
+@media screen and (max-width: 767px){
+    .mainGridContainer{
+        padding: 18px;
+    }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1024px){
+    .mainGridContainer{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+    }
+}
