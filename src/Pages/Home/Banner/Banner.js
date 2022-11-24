@@ -1,9 +1,48 @@
 import React from 'react';
+import imgOne from "../../../assets/images/bookOne.avif";
+import imgTwo from "../../../assets/images/bookTwo.avif";
+import imgThree from "../../../assets/images/bookThree.avif";
+import imgFour from "../../../assets/images/bookFour.avif";
+import BannerSlide from './BannerSlide';
+
+const bannerData = [
+    {
+        image: imgOne,
+        prev: 4,
+        id: 1,
+        next: 2
+    },
+    {
+        image: imgTwo,
+        prev: 1,
+        id: 2,
+        next: 3
+    },
+    {
+        image: imgThree,
+        prev: 2,
+        id: 3,
+        next: 4
+    },
+    {
+        image: imgFour,
+        prev: 3,
+        id: 4,
+        next: 1
+    }
+]
 
 const Banner = () => {
     return (
-        <div>
-            <h1>|Banner|</h1>
+        <div className='w-full mx-auto'>
+            <div className='carousel py-3 mx-auto'>
+                {
+                    bannerData.map(slide => <BannerSlide
+                        key={slide.id}
+                        slide={slide}
+                    ></BannerSlide>)
+                }
+            </div>
         </div>
     );
 };
