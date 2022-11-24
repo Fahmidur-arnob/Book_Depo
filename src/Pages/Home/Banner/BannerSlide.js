@@ -11,7 +11,7 @@ const BannerSlide = ({ slide }) => {
                 </div>
             </div>
             <div className="absolute flex justify-end transform -translate-y-1/2 left-5 top-1/4">
-                <h1 className='font-bold text-gray-50 lg:text-6xl'>
+                <h1 className='font-bold text-gray-50 lg:text-6xl mt-8'>
                     A room without <br />
                     <span className='font-bold text-violet-600'>BOOKS</span><br />
                     is like a <br />
