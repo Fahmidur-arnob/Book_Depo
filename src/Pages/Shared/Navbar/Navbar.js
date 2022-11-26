@@ -1,15 +1,34 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import { FaUserAlt } from 'react-icons/fa';
 
-const Navbar = () => {
+const Navbar = ({ props }) => {
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+
+            })
+            .catch(err => console.log(`Error is: ${err}`))
+    }
 
     const menuItems = <React.Fragment>
         <li>
-            <Link className='rounded-xl font-semibold bg-gradient-to-r from-slate-400 to-slate-300'>Home</Link>
-            <Link className='rounded-xl font-semibold'>About Us</Link>
-            <Link className='rounded-xl font-semibold'>Reviews</Link>
+            <Link to='/' className='rounded-xl font-semibold bg-gradient-to-r from-slate-400 to-slate-300'>Home</Link>
+            <Link to='about' className='rounded-xl font-semibold'>About Us</Link>
+            <Link to='/reviews' className='rounded-xl font-semibold'>Reviews</Link>
+            {
+                user?.uid 
+                ? 
+                <Link onClick={handleLogOut} className="btn bg-indigo-900 text-gray-50 rounded-xl hover:bg-blue-900 border border-gray-50" to='/signup'>Log Out</Link>
+                :
+                <></>
+            }
         </li>
     </React.Fragment>
+
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -21,13 +40,45 @@ const Navbar = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <Link className="btn btn-ghost normal-case text-xl">GOODIES</Link>
+                <Link className="btn btn-ghost normal-case text-xl">BOOK_DEPO</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
                     {menuItems}
                 </ul>
             </div>
+
+            <div className="navbar-end gap-2 mx-4">
+                {
+                    user?.uid ?
+                        <>
+                            {/* <Link onClick={handleLogOut} className="btn bg-indigo-900 rounded-xl hover:bg-blue-900 border border-gray-50" to='/signup'>Log Out</Link> */}
+
+
+                            <span className='text-sm font-semibold'>{user?.displayName}</span>
+                        </>
+                        :
+                        <>
+                            <Link className="btn bg-indigo-700 rounded-xl border border-gray-50
+                                hover:border-gray-50
+                                hover:bg-blue-700" to='/login'>Login</Link>
+
+                            <Link className="btn bg-indigo-700 rounded-xl border border-gray-50
+                                hover:border-gray-50
+                                hover:bg-blue-700" to='/signup'>Sign Up</Link>
+                        </>
+                }
+            </div>
+
+            <div className='mr-2'>
+                    {
+                        user?.photoURL
+                            ?
+                            <img style={{ height: '30px' }} className="rounded-lg w-12" src={user?.photoURL} title={`${user?.displayName}`} alt="No Img" />
+                            :
+                            user?.uid ? <FaUserAlt></FaUserAlt> : <></>
+                    }
+                </div>
         </div>
     );
 };
