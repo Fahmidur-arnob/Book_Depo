@@ -15,7 +15,7 @@ const BookCategories = () => {
 
     return (
         <div>
-            <h1 className='text-5xl textg-center mb-12 mt-16 font-semibold'>Categories</h1>
+            <h1 className='text-5xl text-center mb-12 mt-16 font-semibold'>Categories</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
                 {
                     bookcategories.map(category => <BookCategory
