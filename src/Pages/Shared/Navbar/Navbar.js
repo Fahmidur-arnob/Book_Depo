@@ -62,10 +62,6 @@ const Navbar = ({ props }) => {
                             <Link className="btn bg-indigo-700 rounded-xl border border-gray-50
                                 hover:border-gray-50
                                 hover:bg-blue-700" to='/login'>Login</Link>
-
-                            <Link className="btn bg-indigo-700 rounded-xl border border-gray-50
-                                hover:border-gray-50
-                                hover:bg-blue-700" to='/signup'>Sign Up</Link>
                         </>
                 }
             </div>
