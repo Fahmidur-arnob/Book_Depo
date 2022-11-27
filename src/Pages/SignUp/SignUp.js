@@ -1,12 +1,14 @@
 import React, { useContext, useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import pic from "../../assets/images/bookTwo.avif";
-import { data } from 'autoprefixer';
+import toast from "react-hot-toast";
 
 const SignUp = () => {
     const { createUser, updateUser } = useContext(AuthContext);
     const [errorMsg, setErrorMsg] = useState(null);
+
+    const navigate = useNavigate();
 
     const handleRegisterSubmission = event => {
         event.preventDefault();
@@ -29,11 +31,14 @@ const SignUp = () => {
             .then(res => {
                 const user = res.user;
                 console.log(user);
+                toast.success(`User Created Successfully`);
                 const userInfo = {
                     displayName: name
                 }
                 updateUser(userInfo)
-                .then(()=>{})
+                .then(()=>{
+                    navigate('/');
+                })
                 .catch(error => console.log(`Error is: ${error}`));
                 form.reset();
             })
