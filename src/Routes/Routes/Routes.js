@@ -6,6 +6,10 @@ import BookCollections from "../../Pages/BookCollections/BookCollections";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import SignUp from "../../Pages/SignUp/SignUp";
+import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import DashboardLayout from "../../Layout/DashboardLayout";
+import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 
 const router = createBrowserRouter([
     {
@@ -36,6 +40,16 @@ const router = createBrowserRouter([
                 path:'/bookcollections/:name',
                 element:<BookCollections></BookCollections>,
                 loader:({params}) => fetch(`http://localhost:5000/bookcollections/${params.name}`)
+            }
+        ]
+    },
+    {
+        path:'/dashboard',
+        element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        children:[
+            {
+                path:'/dashboard',
+                element:<MyOrders></MyOrders>
             }
         ]
     }

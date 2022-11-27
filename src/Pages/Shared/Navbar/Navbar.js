@@ -17,14 +17,27 @@ const Navbar = ({ props }) => {
     const menuItems = <React.Fragment>
         <li>
             <Link to='/' className='rounded-xl font-semibold bg-gradient-to-r from-slate-400 to-slate-300'>Home</Link>
+
             <Link to='about' className='rounded-xl font-semibold'>About Us</Link>
+
             <Link to='/reviews' className='rounded-xl font-semibold'>Reviews</Link>
-            {
-                user?.uid 
-                ? 
+            {/* {
+                user?.uid
+                    ? 
+
                 <Link onClick={handleLogOut} className="btn bg-indigo-900 text-gray-50 rounded-xl hover:bg-blue-900 border border-gray-50" to='/signup'>Log Out</Link>
-                :
-                <></>
+                    :
+                    <></>
+            } */}
+            {
+                user?.uid
+                    ?
+                    <>
+                        <Link className=" text-gray-900 font-semibold rounded-xl" to='/dashboard'>Dashboard</Link>
+
+                        <Link onClick={handleLogOut} className="btn bg-indigo-900 text-gray-50 rounded-xl hover:bg-blue-900 border border-gray-50">Log Out</Link>
+                    </>
+                    : <></>
             }
         </li>
     </React.Fragment>
@@ -36,7 +49,7 @@ const Navbar = ({ props }) => {
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
-                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                    <ul tabIndex={1} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         {menuItems}
                     </ul>
                 </div>
@@ -67,14 +80,17 @@ const Navbar = ({ props }) => {
             </div>
 
             <div className='mr-2'>
-                    {
-                        user?.photoURL
-                            ?
-                            <img style={{ height: '30px' }} className="rounded-lg w-12" src={user?.photoURL} title={`${user?.displayName}`} alt="No Img" />
-                            :
-                            user?.uid ? <FaUserAlt></FaUserAlt> : <></>
-                    }
-                </div>
+                {
+                    user?.photoURL
+                        ?
+                        <img style={{ height: '30px' }} className="rounded-lg w-12" src={user?.photoURL} title={`${user?.displayName}`} alt="No Img" />
+                        :
+                        user?.uid ? <FaUserAlt></FaUserAlt> : <></>
+                }
+            </div>
+            <label tabIndex={2} htmlFor="dashboard-drawer" className="btn btn-ghost lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+            </label>
         </div>
     );
 };
