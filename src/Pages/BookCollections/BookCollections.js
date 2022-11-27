@@ -10,7 +10,7 @@ const BookCollections = () => {
                 {
                     loaderData.map(book => <AllBook
                         key={book._id}
-                        books = {book}
+                        book = {book}
                     ></AllBook>)
                 }
             </div>

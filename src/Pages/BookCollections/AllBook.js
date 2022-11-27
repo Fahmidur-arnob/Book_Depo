@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
-const AllBook = ({ books }) => {
-    const { name, img, location, resalePrice, authorName, originalPrice, yearsOfUse, postingTime, sellersName } = books;
+const AllBook = ({ book }) => {
+    const { name, img, location, resalePrice, authorName, originalPrice, yearsOfUse, postingTime, sellersName } = book;
     return (
         <div>
             <div className='card card-compact w-96 shadow-2xl rounded-xl border border-cyan-300'>
@@ -21,6 +22,11 @@ const AllBook = ({ books }) => {
                     <p>Used: {yearsOfUse}</p>
                     <p>Posted On: {postingTime}</p>
                     <p>Sellers Name: {sellersName}</p>
+                </div>
+                <div>
+                    <Link to={`/bookcollections/${name}`}>
+                        <button className='btn bg-indigo-700 rounded-xl'>View All</button>
+                    </Link>
                 </div>
             </div>
         </div>

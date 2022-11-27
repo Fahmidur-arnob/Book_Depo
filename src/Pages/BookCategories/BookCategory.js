@@ -17,7 +17,7 @@ const BookCategory = ({ category }) => {
                     <h1 className='card-title'>{name}</h1>
                     <p>Buy books to enrich your knowledge</p>
                     <div className='card-actions justify-end'>
-                        <Link to={`/bookcollections`}>
+                        <Link to={`/bookcollections/${name}`}>
                             <button className='btn bg-indigo-700 rounded-xl'>View All</button>
                         </Link>
                     </div>
