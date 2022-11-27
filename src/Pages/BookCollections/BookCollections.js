@@ -6,7 +6,7 @@ const BookCollections = () => {
     const loaderData = useLoaderData();
     return (
         <section>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-7'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-8 gap-8 m-4'>
                 {
                     loaderData.map(book => <AllBook
                         key={book._id}

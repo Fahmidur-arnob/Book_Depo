@@ -5,7 +5,7 @@ const AllBook = ({ book }) => {
     const { name, img, location, resalePrice, authorName, originalPrice, yearsOfUse, postingTime, sellersName } = book;
     return (
         <div>
-            <div className='card card-compact w-96 shadow-2xl rounded-xl border border-cyan-300'>
+            <div className='card card-compact mx-auto shadow-2xl rounded-xl border border-cyan-300'>
                 <figure>
                     <img
                         className='rounded-xl'
@@ -23,9 +23,9 @@ const AllBook = ({ book }) => {
                     <p>Posted On: {postingTime}</p>
                     <p>Sellers Name: {sellersName}</p>
                 </div>
-                <div>
-                    <Link to={`/bookcollections/${name}`}>
-                        <button className='btn bg-indigo-700 rounded-xl'>View All</button>
+                <div className='card-actions justify-end'>
+                    <Link>
+                        <button className='btn bg-indigo-700 rounded-xl m-3'>View All</button>
                     </Link>
                 </div>
             </div>
