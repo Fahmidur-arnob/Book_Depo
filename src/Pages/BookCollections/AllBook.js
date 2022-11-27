@@ -24,9 +24,9 @@ const AllBook = ({ book }) => {
                     <p>Sellers Name: {sellersName}</p>
                 </div>
                 <div className='card-actions justify-end'>
-                    <Link>
-                        <button className='btn bg-indigo-700 rounded-xl m-3'>View All</button>
-                    </Link>
+
+                    <label htmlFor="booking-modal" className='btn bg-indigo-700 rounded-xl m-3'>Book Now</label>
+                    
                 </div>
             </div>
         </div>

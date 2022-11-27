@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import AllBook from './AllBook';
+import BookingModal from './BookingModal/BookingModal';
 
 const BookCollections = () => {
     const loaderData = useLoaderData();
@@ -10,10 +11,11 @@ const BookCollections = () => {
                 {
                     loaderData.map(book => <AllBook
                         key={book._id}
-                        book = {book}
+                        book={book}
                     ></AllBook>)
                 }
             </div>
+            <BookingModal></BookingModal>
         </section>
     );
 };
