@@ -14,7 +14,7 @@ const BookingModal = ({ bookName, setBookName }) => {
                 <div className="modal-box relative">
                     <label htmlFor="booking-modal" className="btn btn-sm rounded-lg absolute right-2 top-4">Close</label>
 
-                    <h3 className="text-lg font-bold">{name}</h3>
+                    <h3 className="text-lg font-bold">Book Name: <span className='text-lg text-indigo-600'>{name}</span></h3>
 
                     <form className='grid grid-cols-1 gap-5 my-7'>
                         <input type="text" name='bookName' disabled defaultValue={name} className="input w-full border border-sky-400 rounded-xl" />
