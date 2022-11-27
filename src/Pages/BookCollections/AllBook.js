@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 
-const AllBook = ({ book }) => {
+const AllBook = ({ book, setBookName }) => {
     const { name, img, location, resalePrice, authorName, originalPrice, yearsOfUse, postingTime, sellersName } = book;
     return (
         <div>
@@ -25,8 +24,11 @@ const AllBook = ({ book }) => {
                 </div>
                 <div className='card-actions justify-end'>
 
-                    <label htmlFor="booking-modal" className='btn bg-indigo-700 rounded-xl m-3'>Book Now</label>
-                    
+                    <label
+                        htmlFor="booking-modal" className='btn bg-indigo-700 rounded-xl m-3'
+                        onClick={() => setBookName(book)}
+                    >Book Now</label>
+
                 </div>
             </div>
         </div>

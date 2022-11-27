@@ -2,9 +2,10 @@ import React, { useContext, useState } from 'react';
 import { Link } from "react-router-dom";
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import pic from "../../assets/images/bookTwo.avif";
+import { data } from 'autoprefixer';
 
 const SignUp = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUser } = useContext(AuthContext);
     const [errorMsg, setErrorMsg] = useState(null);
 
     const handleRegisterSubmission = event => {
@@ -28,6 +29,12 @@ const SignUp = () => {
             .then(res => {
                 const user = res.user;
                 console.log(user);
+                const userInfo = {
+                    displayName: name
+                }
+                updateUser(userInfo)
+                .then(()=>{})
+                .catch(error => console.log(`Error is: ${error}`));
                 form.reset();
             })
             .catch(err => console.error(`Error is ${err}`));
