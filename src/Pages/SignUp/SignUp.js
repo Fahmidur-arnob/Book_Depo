@@ -1,148 +1,107 @@
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
-import pic from "../../assets/images/bookTwo.avif";
-import toast from "react-hot-toast";
 
 const SignUp = () => {
+    const { register, handleSubmit, formState: { errors } } = useForm('');
     const { createUser, updateUser } = useContext(AuthContext);
-    const [errorMsg, setErrorMsg] = useState(null);
+    const [signUpError, setSignUpError] = useState('');
 
-    const navigate = useNavigate();
-
-    const handleRegisterSubmission = event => {
-        event.preventDefault();
-        const form = event.target;
-        const name = form.name.value;
-        const email = form.email.value;
-        const password = form.password.value;
-        const confirm = form.confirm.value;
-
-        if (password < 6) {
-            setErrorMsg(`${password} is too short.`);
-            return;
-        }
-        else if (password !== confirm) {
-            setErrorMsg(`Didnot Match.`);
-            return;
-        }
-
-        createUser(email, password)
+    //password auth;
+    const handleSignUp = (data) => {
+        console.log("Sign Up Data: ", data);
+        setSignUpError('');
+        createUser(data.email, data.password)
             .then(res => {
                 const user = res.user;
                 console.log(user);
-                toast.success(`User Created Successfully`);
+                toast.success("User Created Successfully");
                 const userInfo = {
-                    displayName: name
+                    displayName: data.name
                 }
                 updateUser(userInfo)
-                .then(()=>{
-                    navigate('/');
-                })
-                .catch(error => console.log(`Error is: ${error}`));
-                form.reset();
+                    .then(() => { })
+                    .catch(err => console.log("Error is: ", err));
             })
-            .catch(err => console.error(`Error is ${err}`));
+            .catch(error => {
+                console.log("Error is :", error);
+                setSignUpError(error.message);
+            });
+
     }
 
-
-
     return (
-        <section className="h-full gradient-form bg-gray-200 md:h-screen">
-            <div className="container py-12 px-6 h-full">
-                <div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
-                    <div className="xl:w-10/12">
-                        <div className="block bg-white shadow-lg rounded-lg">
-                            <div className="lg:flex lg:flex-wrap flex-row-reverse g-0">
+        <div className='h-[800px] flex justify-center items-center'>
+            <div className='shadow-2xl m-4 p-7 rounded-2xl w-96'>
+                <h1 className='text-5xl text-accent text-center'>Sign Up</h1>
+                <div className="divider mt-4 mb-10"></div>
+                <form onSubmit={handleSubmit(handleSignUp)}>
 
-                                <div className="lg:w-6/12 px-4 md:px-0">
-                                    <div className="md:p-12 md:mx-6">
-                                        <form onSubmit={handleRegisterSubmission}>
-                                            <p className="mb-4">Please Sign In</p>
-                                            <div className="mb-4">
-                                                <input
-                                                    type="text"
-                                                    name="name"
-                                                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                    <div className="form-control w-full max-w-xs mb-3">
+                        <label className="label">
+                            <span className="font-bold">Name</span>
+                        </label>
 
-                                                    placeholder="Enter Your Name"
-                                                />
-                                            </div>
-                                            <div className="mb-4">
-                                                <input
-                                                    type="email"
-                                                    name="email"
-                                                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-
-                                                    placeholder="Enter Your Email"
-                                                />
-                                            </div>
-                                            <div className="mb-4">
-                                                <input
-                                                    type="password"
-                                                    name="password"
-                                                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-
-                                                    placeholder="Enter Your Password"
-                                                />
-                                            </div>
-                                            <div className="mb-4">
-                                                <input
-                                                    type="password"
-                                                    name="confirm"
-                                                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-
-                                                    placeholder="Confirm Your Password"
-                                                />
-                                            </div>
-                                            <div className="text-center pt-1 mb-12 pb-1">
-                                                <button
-                                                    className="inline-block px-6 py-2.5 text-black font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-rose-400 hover:text-white hover:shadow-lg focus:shadow-lg  focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
-                                                    type="submit"
-                                                    data-mdb-ripple="true"
-                                                    data-mdb-ripple-color="light"
-                                                >
-                                                    Sign Up
-                                                </button>
-                                            </div>
-                                            <div className="flex items-center justify-between pb-6">
-                                                <p className="mb-0 mr-2">Already have an account?</p>
-                                                <Link to='/login'>
-                                                    <button
-                                                        type="button"
-                                                        className="inline-block px-6 py-2 border-2 border-red-600 text-red-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
-                                                        data-mdb-ripple="true"
-                                                        data-mdb-ripple-color="light">
-                                                        Login
-                                                    </button>
-                                                </Link>
-                                                <p>{errorMsg}</p>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-
-                                <div className="lg:w-6/12 items-center lg:rounded-r-lg rounded-b-lg lg:rounded-bl-none">
-                                    <div className="text-indigo-800 px-4 py-6 md:p-12 md:mx-6">
-                                        <div className="text-center">
-                                            <img
-                                                className="mx-auto w-full rounded-xl"
-                                                src={pic}
-                                                alt="logo"
-                                            />
-                                        </div>
-                                        <h4 className="text-xl font-semibold mt-6">
-                                            “That’s the thing about books. They let you travel without moving your feet.”
-                                            ―Jhumpa Lahiri, <br /> <span className='text-rose-800'>The Namesake</span>
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <input
+                            type="text"
+                            className="input input-bordered w-full max-w-xs"
+                            {...register("name", {
+                                required: true,
+                            })}
+                        />
+                        {errors.name && <p className='text-amber-800 font-semibold'>{errors.name?.message}</p>}
                     </div>
-                </div>
+
+                    <div className="form-control w-full max-w-xs mb-3">
+                        <label className="label">
+                            <span className="label-text font-bold">Email</span>
+                        </label>
+
+                        <input
+                            type="email"
+                            className="input input-bordered w-full max-w-xs"
+                            {...register("email", {
+                                required: "Please Provide Your Email",
+                            })}
+                        />
+                        {errors.email && <p className='text-amber-800 font-semibold'>{errors.email?.message}</p>}
+                    </div>
+
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label">
+                            <span className="label-text font-bold">Password</span>
+                        </label>
+
+                        <input
+                            type="password"
+                            className="input input-bordered w-full max-w-xs"
+                            {...register("password", {
+                                required: "Password is REQUIRED",
+                                minLength: {
+                                    value: 6,
+                                    message: "Password Must be 6 Characters or Longer."
+                                },
+                                pattern: {
+                                    value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                                    message: "Password must contain atleast one uppercase letter, one number and one special character and in total 6 characters or more.",
+                                }
+                            })}
+                        />
+                        {errors.password && <p className='text-amber-800 font-semibold'>{errors.password?.message}</p>}
+
+                    </div>
+
+                    <input type="submit" value="Sign Up" className='btn bg-indigo-700 rounded-xl w-full mt-8' />
+
+                    {signUpError && <p className='text-fuchsia-800 font-semibold'>{signUpError}</p>}
+                </form>
+                <div className="divider m-8">OR</div>
+                <p className='mt-5'>Already Have an Account on BOOK DEPO? <Link to='/login' className='font-semibold text-indigo-800'>Log In</Link></p>
+
             </div>
-        </section>
+        </div>
     );
 };
 

@@ -6,15 +6,17 @@ import imgThree from "../../../assets/images/gridThree.avif";
 import imgFour from "../../../assets/images/gridFour.avif";
 import imgFive from "../../../assets/images/gridFive.avif";
 import imgSix from "../../../assets/images/gridSix.avif";
-import './HomeCard.css';
+// import './HomeCard.css';
+//className='mainPicGrid'
+//picGrid
 
 const HomeCard = () => {
     return (
         <>
-            <h1 className='text-5xl mt-24 mb-16 font-bold text-center'>Books are a uniquely portable magic</h1>
+            <h1 className='text-3xl mt-24 mb-16 font-bold text-center'>Books are a uniquely portable magic</h1>
 
-            <div className='mainPicGrid'>
-                <div className="max-w-6xl mb-24 bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 picGrid">
+            <div>
+                <div className="grid lg:grid-cols-3 md:grid-cols-3 grid-cols-1 lg:w-full w-96 gap-5 px-5 mb-24 bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 ">
                     <Link >
                         <img className="rounded-lg" src={imgOne} alt="" />
                     </Link>

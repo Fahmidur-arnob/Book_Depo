@@ -8,9 +8,9 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <HomeCard></HomeCard>
-            <BookCategories></BookCategories>
-            <HomeQuotes></HomeQuotes>
+            {/* <HomeCard></HomeCard> */}
+            {/* <BookCategories></BookCategories> */}
+            {/* <HomeQuotes></HomeQuotes> */}
         </div>
     );
 };

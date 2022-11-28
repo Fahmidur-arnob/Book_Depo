@@ -1,7 +1,7 @@
-.picGrid{
+/* .picGrid{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap:15px;
+    gap:12px;
     justify-content: center;
     align-items: center;
 }
@@ -23,4 +23,4 @@
     .mainPicGrid{
         padding: 23px;
     }
-}
+} */
