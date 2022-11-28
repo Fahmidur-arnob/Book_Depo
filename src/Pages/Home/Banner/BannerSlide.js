@@ -1,5 +1,5 @@
 import React from 'react';
-import './BannerSlide.css';
+
 
 const BannerSlide = ({ slide }) => {
 
@@ -9,14 +9,14 @@ const BannerSlide = ({ slide }) => {
         <div id={`slide${id}`} className="carousel-item relative w-full">
 
 
-            <div className='carousel-img'>
-                <img src={image} alt="" className="carou-img rounded-xl" />
+            <div>
+                <img src={image} alt="" className="rounded-xl" />
             </div>
 
 
             <div className="absolute flex justify-end transform -translate-y-1/2 left-5 top-1/4">
 
-                <h1 className='font-bold text-gray-50 lg:text-4xl'>
+                <h1 className='font-bold text-gray-50 lg:text-5xl mt-4'>
                     A room without <br />
                     <span className='font-semibold text-violet-600'>BOOKS</span><br />
                     is like a <br />

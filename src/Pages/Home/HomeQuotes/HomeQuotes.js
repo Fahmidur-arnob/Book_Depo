@@ -6,7 +6,7 @@ const HomeQuotes = () => {
         <>
             <h1 className='font-bold text-center text-5xl mt-24 mb-16'>QUOTES</h1>
 
-            <div className='mainGridContainer mx-auto'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mx-auto'>
 
                 <div className="car bg-base-100 shadow-xl">
                     <div className="card-body">
