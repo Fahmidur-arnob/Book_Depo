@@ -38,7 +38,7 @@ const MyOrders = () => {
 
                         {
                             bookings.map((booking, i) =>
-                                <tr className='hover'>
+                                <tr key={booking._id} className='hover'>
                                     <th>{i + 1}</th>
                                     <td>{booking.name}</td>
                                     <td>{booking.productName}</td>

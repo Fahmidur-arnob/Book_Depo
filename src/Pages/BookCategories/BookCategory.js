@@ -6,7 +6,7 @@ const BookCategory = ({ category }) => {
 
     return (
         <div>
-            <div className='card w-96 mx-auto bg-base-100 shadow-2xl rounded-xl border border-cyan-300'>
+            <div className='card w-[90%] mx-auto bg-base-100 shadow-2xl rounded-xl border border-cyan-300'>
                 <figure>
                     <img
                         
