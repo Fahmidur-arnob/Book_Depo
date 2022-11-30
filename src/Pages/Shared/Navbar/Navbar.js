@@ -20,7 +20,6 @@ const Navbar = ({ props }) => {
 
             <Link to='about' className='rounded-xl font-semibold'>About Us</Link>
 
-            <Link to='/reviews' className='rounded-xl font-semibold'>Reviews</Link>
             {
                 user?.uid
                     ?
