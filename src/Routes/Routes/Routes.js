@@ -40,7 +40,7 @@ const router = createBrowserRouter([
             {
                 path:'/bookcollections/:name',
                 element:<PrivateRoute><BookCollections></BookCollections></PrivateRoute>,
-                loader:({params}) => fetch(`http://localhost:5000/bookcollections/${params.name}`)
+                loader:({params}) => fetch(`https://goodies-dot-com-server.vercel.app/bookcollections/${params.name}`)
             },
             {
                 path:'/blog',

@@ -28,7 +28,7 @@ const BookingModal = ({ bookName, setBookName }) => {
             price: resalePrice,
         }
 
-        fetch(`http://localhost:5000/bookings`, {
+        fetch(`https://goodies-dot-com-server.vercel.app/bookings`, {
             method: 'POST',
             headers:{
                 'content-type': 'application/json'
