@@ -34,7 +34,6 @@ const MyOrders = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* <!-- row 1 --> */}
 
                         {
                             bookings.map((booking, i) =>
@@ -47,6 +46,7 @@ const MyOrders = () => {
                                     <td>{booking.phoneNumber}</td>
                                 </tr>)
                         }
+                        
                     </tbody>
                 </table>
             </div>

@@ -10,6 +10,7 @@ import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
+import Blog from "../../Pages/Blog/Blog";
 
 const router = createBrowserRouter([
     {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
                 path:'/bookcollections/:name',
                 element:<PrivateRoute><BookCollections></BookCollections></PrivateRoute>,
                 loader:({params}) => fetch(`http://localhost:5000/bookcollections/${params.name}`)
+            },
+            {
+                path:'/blog',
+                element: <Blog></Blog>
             }
         ]
     },
